@@ -19,8 +19,9 @@ function start () {
     time = in_num * 1000
     while(loop&&!ended){
     basic.showString("" + (time / 1000))
+    basic.pause(1000)
     time += -1000
-    if (time==1000) {
+    if (time<1000) {
         ended = true
         while (loop&&ended) {
             basic.showIcon(IconNames.Yes)
@@ -35,6 +36,11 @@ function start () {
     }
     }
 }
+basic.forever(function(){
+    if(in_num<0){
+        in_num=1
+    }
+})
 
 let ended = false
 let time = 0
